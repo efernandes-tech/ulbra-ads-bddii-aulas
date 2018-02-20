@@ -184,10 +184,28 @@ WHERE PkCodClass = 5;
 
 -- 3)
 
+SELECT ValorDiaria, ValorDiaria * 0.18, ValorDiaria + (ValorDiaria * 0.18) 
+FROM TbClassificacao
+WHERE NomeClass LIKE 'A%'
+    OR NomeClass LIKE 'D%';
 
+UPDATE TbClassificacao SET
+ValorDiaria = ValorDiaria + (ValorDiaria * 0.18)
+WHERE NomeClass LIKE 'A%'
+    OR NomeClass LIKE 'D%';
 
+-- 4)
 
+INSERT INTO TbCliente VALUES (11, 'Teste', 'Rua Teste, 1', 'Canoas', 'RJ');
 
+SELECT *
+FROM TbCliente
+WHERE (UfCli = 'RJ' OR UfCli = 'SC')
+AND (PkCodCli BETWEEN 10 AND 12)
+
+DELETE FROM TbCliente
+WHERE (UfCli = 'RJ' OR UfCli = 'SC')
+AND (PkCodCli BETWEEN 10 AND 12)
 
 
 
