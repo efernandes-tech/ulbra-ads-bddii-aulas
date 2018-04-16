@@ -1,7 +1,9 @@
-// Exemplo 4: - “Definindo Cláusula UNIQUE ao criar uma tabela”
+# Exemplo 4: - “Definindo Cláusula UNIQUE ao criar uma tabela”
+
 CREATE TABLE DadosUsuario (
-    codigo integer not null,
-    nome varchar(20) UNIQUE,
-    numerofuncionarios integer,
-    usuario varchar(20),
-    senha varchar(20));
+    codigo INTEGER NOT NULL,
+    nome VARCHAR(20) UNIQUE,
+    numerofuncionarios INTEGER,
+    usuario VARCHAR(20),
+    senha VARCHAR(20)
+);
