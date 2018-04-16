@@ -1,20 +1,14 @@
 # Exemplo 6: - “Exemplo de criação de uma função”
 
-# 1
-CREATE OR REPLACE FUNCTION dobro
-# 2
-(NUMERO IN NUMBER)
-# 3
+
+CREATE OR REPLACE FUNCTION dobro (
+    numero IN NUMBER
+)
 RETURN NUMBER
-# 4
 IS
-# 4
-N NUMBER;
-# 5
+    n NUMBER;
 BEGIN
-# 7
-N := NUMERO*2;
-# 8
-RETURN (N);
-# 9
+    n := numero*2;
+
+    RETURN (n);
 END dobro;

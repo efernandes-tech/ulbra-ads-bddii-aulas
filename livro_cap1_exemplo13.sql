@@ -5,6 +5,6 @@ CREATE TABLE avaliacao (
     numMatricula INTEGER,
     codcurso INTEGER,
     conceito NUMBER(15,2),
-    CONSTRAINT codcurso_fk FOREIGN KEY(codcurso)
-        REFERENCES curso(codcurso)
+    CONSTRAINT codcurso_fk FOREIGN KEY (codcurso)
+        REFERENCES curso (codcurso)
 );

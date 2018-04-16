@@ -1,26 +1,19 @@
 # Exemplo 5: - “Exemplo de chamada da procedure aumenta_sal”
 
-# 1
-CREATE OR REPLACE PROCEDURE aumenta_salario_valor
-# 2
-( codigo IN tbfuncionario.codfunc%TYPE,
-# 3
-salario IN OUT number)
-# 3
+CREATE OR REPLACE PROCEDURE aumenta_salario_valor (
+    codigo IN tbfuncionario.codfunc%TYPE,
+    salario IN OUT number
+)
 IS
-# 5
-antigosal tbfuncionario.salariofunc%type;
-# 5
+    antigosal tbfuncionario.salariofunc%type;
 BEGIN
-# 7
-SELECT NVL(salariofunc, 0) INTO antigosal FROM tbfuncionario
-# 8
-WHERE codfunc=codigo;
-# 9
-salario := salario + antigosal;
-# 10
-UPDATE tbfuncionario SET salariofunc = salario WHERE codfunc = codigo;
-# 11
-salario := antigosal;
-# 12
+    SELECT NVL(salariofunc, 0) INTO antigosal FROM tbfuncionario
+        WHERE codfunc=codigo;
+
+    salario := salario + antigosal;
+
+    UPDATE tbfuncionario SET
+        salariofunc = salario WHERE codfunc = codigo;
+
+    salario := antigosal;
 END aumenta_salario_valor;

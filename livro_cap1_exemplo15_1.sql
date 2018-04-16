@@ -5,6 +5,6 @@ CREATE TABLE empregado (
     nomeemp VARCHAR(20),
     salario NUMBER(15,2),
     codresp INTEGER,
-    CONSTRAINT codresp_fk FOREIGN KEY(codresp)
-        REFERENCES empregado(codemp)
+    CONSTRAINT codresp_fk FOREIGN KEY (codresp)
+        REFERENCES empregado (codemp)
 );
