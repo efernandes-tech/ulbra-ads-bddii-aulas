@@ -1,4 +1,4 @@
-# Exemplo 1: - “Definindo Cláusula NOT NULL ao criar tabela”
+# Exemplo 1: - "Definindo Cláusula NOT NULL ao criar tabela"
 
 CREATE TABLE aluno (
     codigo INTEGER NOT NULL,
