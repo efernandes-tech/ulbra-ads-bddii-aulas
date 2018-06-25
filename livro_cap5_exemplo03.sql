@@ -1,2 +1,3 @@
-// Exemplo 3:
-drop sequence teste_sequence1;
+# Exemplo 3:
+
+DROP SEQUENCE teste_sequence1;

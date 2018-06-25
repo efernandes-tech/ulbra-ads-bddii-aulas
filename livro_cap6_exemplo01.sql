@@ -1,14 +1,17 @@
-// Exemplo 1: - “Exemplo de problema na execução do SELECT”
+# Exemplo 1: - "Exemplo de problema na execução do SELECT"
 
-create or replace
-FUNCTION funcaocomerro (codcategoria IN NUMBER)
-RETURN number
+CREATE OR REPLACE FUNCTION funcaocomerro (
+    codcategoria IN NUMBER
+)
+RETURN NUMBER
 IS
-wvalor NUMBER;
+    wvalor NUMBER;
 BEGIN
-wvalor:=0;
+    wvalor := 0;
 
-select nvl(valorproduto,0) INTO wvalor from tbproduto
-where fkcodprod=codcategoria;
-RETURN (wvalor);
+    SELECT NVL(valorproduto, 0) INTO wvalor
+    FROM tbproduto
+    WHERE fkcodprod = codcategoria;
+
+    RETURN (wvalor);
 END funcaocomerro;

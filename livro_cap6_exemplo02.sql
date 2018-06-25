@@ -1,8 +1,7 @@
-// Exemplo 2: - “Exemplo de declaração de Cursor”
+# Exemplo 2: - "Exemplo de declaração de Cursor"
 
-create or replace procedure declaracursor
+CREATE OR REPLACE PROCEDURE declaracursor
 AS
-CURSOR C1 IS SELECT cod,nome,salario FROM
-tbfuncionario where estado=’SP’;
+    CURSOR c1 IS SELECT cod, nome, salario FROM tbfuncionario WHERE estado = 'SP';
 BEGIN
 : :

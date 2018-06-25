@@ -1,10 +1,11 @@
-// Exemplo 13: - “Criar tabela que armazenará dados antigos de aluno”
+# Exemplo 13: - "Criar tabela que armazenará dados antigos de aluno"
 
-CREATE TABLE TBALUNOANT(
-codigo integer NOT NULL,
-nome VARCHAR2(30),
-idade integer,
-nota1 number(15,2),
-nota2 number(15,2),
-media number(15,2),
-operacao varchar2(15));
+CREATE TABLE tbalunoant(
+    codigo INTEGER NOT NULL,
+    nome VARCHAR2(30),
+    idade INTEGER,
+    nota1 NUMBER(15, 2),
+    nota2 NUMBER(15, 2),
+    media NUMBER(15, 2),
+    operacao VARCHAR2(15)
+);

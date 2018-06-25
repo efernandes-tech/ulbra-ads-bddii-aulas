@@ -1,5 +1,6 @@
-// Exemplo 1:
-create sequence teste_sequence1
-increment by 10
-start with 120
-maxvalue 9990;
+# Exemplo 1:
+
+CREATE SEQUENCE teste_sequence1
+    INCREMENT BY 10
+    START WITH 120
+    MAXVALUE 9990;

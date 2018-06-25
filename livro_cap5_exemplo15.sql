@@ -1,7 +1,7 @@
-// Exemplo 15: - “Exemplos para chamada da trigger TBALUNO_AUD”
+# Exemplo 15: - “Exemplos para chamada da trigger tbaluno_AUD”
 
-update tbaluno set idade=40 where codigo=23;
-update tbaluno set idade=idade+1 where codigo<=3;
-delete tbaluno where codigo=21;
-select * from tbaluno;
-select * from tbalunoant
+UPDATE tbaluno SET idade = 40 WHERE codigo = 23;
+UPDATE tbaluno SET idade = idade + 1 WHERE codigo <= 3;
+DELETE tbaluno WHERE codigo = 21;
+SELECT * FROM tbaluno;
+SELECT * FROM tbalunoant;

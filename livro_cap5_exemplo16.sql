@@ -1,27 +1,39 @@
-// Exemplo 16: - “Uso de :NEW e :OLD juntos”
+# Exemplo 16: - "Uso de :NEW e :OLD juntos"
 
-create or replace trigger TBALUNO_AUD
-AFTER update or delete on tbaluno
-FOR EACH ROW
-declare
-woperacao varchar2(15);
-begin
-IF (updating) AND
+CREATE OR REPLACE TRIGGER tbaluno_AUD
+    AFTER UPDATE OR DELETE ON tbaluno FOR EACH ROW
+DECLARE
+    woperacao VARCHAR2(15);
+BEGIN
+    IF (updating) AND (
+        :OLD.codigo <> :NEW.codigo OR :OLD.nome <> :NEW.nome
+        OR :OLD.idade <> :NEW.idade OR :OLD.nota1 <> :NEW.nota1
+        OR :OLD.nota2 <> :NEW.nota2 OR :OLD.media <> :NEW.media
+    ) THEN
+        woperacao := 'Alterou';
+        INSERT INTO tbalunoant(codigo, nome, idade, nota1, nota2, media, operacao)
+            VALUES (
+                :OLD.codigo,
+                :OLD.nome,
+                :OLD.idade,
+                :OLD.nota1,
+                :OLD.nota2,
+                :OLD.media,
+                woperacao
+            );
+    END IF;
 
-(:old.codigo<>:new.codigo or :old.nome<>:new.nome
-or :old.idade<>:new.idade or:old.nota1<>:new.nota1
-or :old.nota2<>:new.nota2 or :old.media<>:new.media) THEN
-woperacao:=’Alterou’;
-
-insert into TBALUNOANT(codigo,nome,idade,nota1,nota2,media,
-operacao) VALUES(:old.codigo,:old.nome,:old.idade,:old.nota1,
-:old.nota2,:old.media,woperacao);
-END IF;
-IF deleting THEN
-woperacao:=’Removeu’;
-
-insert into TBALUNOANT(codigo,nome,idade,nota1,nota2,media,
-operacao) VALUES(:old.codigo,:old.nome,:old.idade,:old.nota1,
-:old.nota2,:old.media,woperacao);
-END IF;
+    IF deleting THEN
+        woperacao := 'Removeu';
+        INSERT INTO tbalunoant(codigo, nome, idade, nota1, nota2, media, operacao)
+            VALUES (
+                :OLD.codigo,
+                :OLD.nome,
+                :OLD.idade,
+                :OLD.nota1,
+                :OLD.nota2,
+                :OLD.media,
+                woperacao
+            );
+    END IF;
 END;

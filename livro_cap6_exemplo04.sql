@@ -1,29 +1,36 @@
-// Exemplo 4: - “Exemplo 1 de utilização de cursores”
+# Exemplo 4: - "Exemplo 1 de utilização de cursores"
 
-create or replace procedure exemploCur1
-As
-wcodigo tbproduto.codigo%type;
-wnome tbproduto.nome%type;
-CURSOR C1 IS SELECT codigo, nome FROM tbproduto order by codigo;
-begin
-OPEN C1; --Abrindo o cursor
-loop --instrução de início do loop
-if (C1%FOUND) then
-dbms_output.put_line(‘Existe registros no cursor’ );
-else
-dbms_output.put_line(‘Não existe ninguém no cursor’ );
-end if;
-dbms_output.put_line(‘=====================’ );
-FETCH C1 INTO wcodigo, wnome;
-dbms_output.put_line(‘Código: ‘ || wcodigo);
-dbms_output.put_line(‘Nome: ‘ || wnome);
-dbms_output.put_line(‘Estou “varrendo” a linha ‘ || C1% ROWCOUNT);
-exit when C1%NOTFOUND=true; --condição de saída do laço loop
-end loop;
-CLOSE C1;
-if (C1%ISOPEN) then
-dbms_output.put_line(‘O cursor está aberto!’);
-else
-dbms_output.put_line(‘O cursor foi fechado com sucesso!’);
-end if;
-end ;
+CREATE OR REPLACE PROCEDURE exemploCur1
+AS
+    wcodigo tbproduto.codigo%TYPE;
+    wnome tbproduto.nome%TYPE;
+    CURSOR c1 IS SELECT codigo, nome FROM tbproduto ORDER BY codigo;
+BEGIN
+    OPEN c1; -- Abrindo o cursor.
+
+    LOOP -- Instrução de início do loop.
+        IF (c1%FOUND) THEN
+            dbms_output.put_line('Existe registros no cursor');
+        ELSE
+            dbms_output.put_line('Não existe ninguém no cursor');
+        END IF;
+
+        dbms_output.put_line('=====================' );
+
+        FETCH c1 INTO wcodigo, wnome;
+
+        dbms_output.put_line('Código: ' || wcodigo);
+        dbms_output.put_line('Nome: ' || wnome);
+        dbms_output.put_line('Estou "varrendo" a linha ' || c1%ROWCOUNT);
+
+        EXIT WHEN c1%NOTFOUND = true; -- Condição de saída do laço loop.
+    END LOOP;
+
+    CLOSE c1;
+
+    IF (c1%ISOPEN) THEN
+        dbms_output.put_line('O cursor está aberto!');
+    ELSE
+        dbms_output.put_line('O cursor foi fechado com sucesso!');
+    END IF;
+END;
